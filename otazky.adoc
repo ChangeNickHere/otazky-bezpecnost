@@ -1,0 +1,102 @@
+= Otázky Bezpečnost
+:toc: 
+
+= 1 Ochana dat. Popište na základě čeho budete implementovat bezpečnostní politiky.
+
+== Ochrana dat
+
+Data můžeme rozdělit do následujících skupin:
+
+* chráněná ze zákona (např. osobní údaje)
+* provozní data
+* data zákazníků, nebo o zákaznících
+* informace o provozu frmy
+* know how
+* perzentace pro veřejnost
+
+*Proč to chráníme?*
+
+Chceme se vyhnout fnančním ztrátam, které mohou být způsobeny:
+
+* ztrátou zákazníků
+* ztrátou know how
+* pokutami
+* poškozením/ztrátou majetku
+
+Chceme si uchovat dobrou pověst, která může být narušena:
+
+* defacementem WEB stránek
+* únikem dat
+
+Chceme se vyhnout porušení zákona (bezůhonnost)
+
+*Kde se aktiva nacházejí?*
+
+* servery
+* klienti
+* média
+* síť
+* Internet
+* papírové dokumenty
+
+== Politika
+
+Při tvorby politik bychom však měli mít stále na mysli:
+
+* Musíme identifikovat a klasifikovat informace, které chceme chránit.
+* Musíme identifikovat potenciální nebezpečí, která jim hrozí.
+* Musíme definovat úroveň ochrany, kterou chceme zajistit.
+
+Bezpečnostní politika musí mít bezpodmínečně podporu u vedení společnosti. Vedení musí jasně
+deklarovat, že definované politiky podporuje, že vyžaduje jejich naplnění a že jsou důležité pro chod
+společnosti.
+
+= 2 Podpora bezpečnostní problematiky v zákonech ČR.
+
+= 3 Základní hrozby a obrana proti nim.
+
+= 4 Popište postup návrhu bezpečnostní politiky.
+
+= 5 Jaké analýzy je třeba provést ještě před tvorbou bezpećnostní politiky?
+
+= 6 Co by měla obsahovat bezpečnostní politika?
+
+= 7 Uveďte příklady bezpečnostních politik.
+
+= 8 Jaké jsou podmínky pro úspěsnou implementaci bezpečnostní politiky?
+
+= 9 Uveďte příklady metod autentizace (autentizační mechanizmy).
+
+= 10 Rozeberte problematiku síly hesla.
+
+= 11 Uveďte metody snížení rizika napadení serveru.
+
+= 12 Uveďte metody snížení rizika napadení klienta.
+
+= 13 Uveďte mechanizmy zabezpečení souborového systému.
+
+= 14 Firewall.
+
+= 15 Auditing a logování.
+
+= 16 Problematika šifrování dat.
+
+= 17 Bezpečnost WEB prohlížeče.
+
+= 18 Bezpečnost komunikace.
+
+= 19 Lokální ověření zabezpečení.
+
+= 20 Rozeberte problematiku monitorování a detekce útoků.
+
+= 21 IDS/IPS
+
+= 22 Audit/Penetrační test
+
+= 23 Reakce na incidenty.
+
+= 24 Metodologie reakce na incidenty.
+
+= 25 Metodologie duplikace dat v rámci reakce na incidenty.
+
+= 26 ISMS a normativní základna
