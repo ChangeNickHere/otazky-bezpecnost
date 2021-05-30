@@ -39,6 +39,15 @@ Chceme se vyhnout porušení zákona (bezůhonnost)
 * Internet
 * papírové dokumenty
 
+*Jak aktiva chráníme?*
+
+* Šifrování
+* Fyzické zabezpečení přístupu
+* Záloha
+* Firewall
+* Systémový aktualizace
+* Antivir
+
 == Politika
 
 Při tvorby politik bychom však měli mít stále na mysli:
@@ -53,25 +62,228 @@ společnosti.
 
 = 2 Podpora bezpečnostní problematiky v zákonech ČR.
 
+Zákon č. 40/2009 Sb., trestní zákoník
+
+§ 230 Neoprávněný přístup k počítačovému systému a nosiči informací
+
+§ 231 Opatření a přechovávání přístupového zařízení a hesla k počítačovému systému a
+jiných takových dat
+
+§ 232 Poškození záznamu v počítačovém systému a na nosiči informací a zásah do
+vybavení počítače z nedbalosti
+
+§ 182 Porušení tajemství dopravovaných zpráv
+
+Zákon o ochraně osobních údajů
+
+Zákon o kybernetické bezpečnosti (NBÚ)
+
+GDPR
+
 = 3 Základní hrozby a obrana proti nim.
 
+*	 sociální inženýrství
+** obezřetnost
+*	 botnet
+*	 malware
+*	 ransomware
+*	 spam/scam 
+*	 podvodné nabídky
+*	 phishing, pharming, spear phishing, vishing, smishing
+*	 hacking
+*	 sniffing
+*	 DoS, DDoS, DRDoS útoky
+*	 šíření závadového obsahu
+*	 identity theft
+*	 APT (Advanced Persistent Threat)
+*	 kyberterorismus
+*	 kybernetické výpalné či vydírání (cyber extortion)
+
+Typy ochrany
+* Udržujte svůj operační systém aktuální
+* Neotvírejte soubory z neznámých nebo podezřelých zdrojů
+* Před spuštěním stažených souborů si prohlédněte všechny soubory antivirem nebo najděte různé způsoby přenosu souborů.
+* Neklikejte na podezřelé odkazy
+* Nainstalujte antivirový program
+* Záloha dat
+
 = 4 Popište postup návrhu bezpečnostní politiky.
+Při tvorby politik bychom však měli mít stále na mysli:
+
+* Musíme identifikovat a klasifikovat informace, které chceme chránit.
+* Musíme identifikovat potenciální nebezpečí, která jim hrozí.
+* Musíme definovat úroveň ochrany, kterou chceme zajistit.
+
+Existuje základní, nikdy nekončící cyklus životnosti politiky:
+
+* VYHODNOCENÍ 
+* TVORBA POLITIKY
+* IMPLEMENTACE POLITIKY
+
+Definování bezpečnostní politiky a její implementace je proces, který není nikdy zcela dokončen.
+
+Politiku by neměl vytvářet jediný člověk (typicky pracovník bezpečnosti). Na její tvorbě by se kromě
+oddělení bezpečnosti měli podílet také zástupci provozu IT, vývoje, ale stejně tak zástupci z
+obchodního a finančního oddělení. Politika by měla podporovat procesy těcho oddělení a ne jim
+působit komplikace.
+
+Bezpečnostní politika musí mít bezpodmínečně podporu u vedení společnosti. Vedení musí jasně
+deklarovat, že definované politiky podporuje, že vyžaduje jejich naplnění a že jsou důležité pro chod
+společnosti.
+
+S politikou musí být seznámen každý, koho se týká.
 
 = 5 Jaké analýzy je třeba provést ještě před tvorbou bezpećnostní politiky?
 
+Analýza rizik (AR)
+
+* identifikuje rizika, která je nutné kontrolovat, nebo akceptovat
+* zahrnuje analýzu hodnot aktiv, hrozeb a zranitelností
+
+Metody analýzy rizik
+
+* kvalitativní (rizika jsu hodnocena ve škále, nebo slovním popisem Míra je určována kvalifikovaným odhadem)
+* kvantitativní (matematický výpočet rizika z frekvence výskytu hrozby a jeho dopadu) riziko je
+nejčastěji vyjadřováno v podobě předpokládaného množství finančních ztrát za určité období
+
+
 = 6 Co by měla obsahovat bezpečnostní politika?
 
+Politika by měla obsahovat:
+
+Průvodní informace od vedení.
+
+Účel politiky
+
+Odpovědnosti a pravomoci
+
+Základní pojmy
+
+Informace o vlastnictví a právu přístupu k datům
+
+Pravidla používání výpočetních systémů
+(slouží primárně k pracovním účelům, kdy a jak pokud vůbec mohou být používány k osobním účelům,
+zodpovědnost uživatelů za autentizační údaje, atd.)
+
+Řízení přístupu
+
+* identifikace a autentizece
+* bezpečné uchovávání autentizačních údajů
+* administrace účtů
+* privilegovaný přístup
+* přístup osob, které nejsou v zaměstnaneckém poměru
+* vzdálený přístup k interní síti
+* počítače bez dozoru
+* nefiremní počítače (v osobním vlastnictví apod.)
+* přimá komunikace (modemy, acces pointy)
+* řízení přístupu k samostatným počítačům
+
+Email
+
+* privátnost informací
+* šifrování zpráv
+* monitorování
+* předávání zpráv
+* archivace zpráv
+
+Přenosná zařízení
+
+* prevence krádeže
+* identifikace zařízení ve vlastnictví společnosti
+* odpis zařízení
+* postup v případě ztráty
+* řízení přístupu
+* odposlech
+* šifrování (přenosu a lokálních dat)
+* škodlivý kód (bezpečné chování a detekce)
+
+Vracení a opravy a likvidace zařízení a přenosných médií
+Software
+
+* přístupy
+* aktualizace
+* licence
+* osobní použití
+* neautorizovaný software
+* antivirová ochrana
+* change management
+
+Veřejné sítě (Internet)
+
+* upload/download
+* řízení přístupu
+* šifrování
+* privátnost
+* využívání k osobní potřebě
+* prezentace na veřejnosti
+
+Síť
+
+* směrovače a firewally (filtrování, směrování podle obsahu)
+* rozdělení na zóny
+* zcela oddělené sítě
+* modemy, access pointy
+* řízení přístupu
+
+Fyzická bezpečnost
+
+* pracovní stanice
+* servery
+* přenosné počítače
+* síťová infrastruktura
+
+Auditing a monitorování
+
+* auditní záznamy a logy
+* IDS
+* honeypot
+
+Vzdělávání uživatelů
+Havarijní plán
+
+* zálohy a obnova
+* redundance
+* zotavení po katastrofě
+* řešení bezpečnostních incidentů
+
+Disciplinární řízení
+
 = 7 Uveďte příklady bezpečnostních politik.
+při jejich tvorbě se vychází z výsledků analýzy rizik. Obsahují definici požadovaných ochranných
+opatření a popis, proč jsou nezbytná
+
+
+Bezpečnostní politika sítě, notebooku, 
 
 = 8 Jaké jsou podmínky pro úspěsnou implementaci bezpečnostní politiky?
 
+
+
 = 9 Uveďte příklady metod autentizace (autentizační mechanizmy).
+
+* Jméno + heslo
+* Biometrie
+* HW bezpečnostní token
+* SW token
 
 = 10 Rozeberte problematiku síly hesla.
 
+Znaková sada 87 znaků:
+
+* 26 znaků anglické abecedy malá písmena
+* 26 znaků anglické abecedy velká písmena
+* 10 znaků číslice
+* 25 znaků speciální znaky !@#$%^&*()_+-={[]};:,.<>?
+
+Síla hesla závisí na délce, znakové sadě.
+
 = 11 Uveďte metody snížení rizika napadení serveru.
 
+
+
 = 12 Uveďte metody snížení rizika napadení klienta.
+
+
 
 = 13 Uveďte mechanizmy zabezpečení souborového systému.
 
