@@ -1,5 +1,6 @@
 = Otázky Bezpečnost
 :toc: 
+:imagesdir: ./pics/
 
 = 1 Ochana dat. Popište na základě čeho budete implementovat bezpečnostní politiky.
 
@@ -255,9 +256,11 @@ opatření a popis, proč jsou nezbytná
 
 Bezpečnostní politika sítě, notebooku, 
 
+TODO
+
 = 8 Jaké jsou podmínky pro úspěsnou implementaci bezpečnostní politiky?
 
-
+TODO
 
 = 9 Uveďte příklady metod autentizace (autentizační mechanizmy).
 
@@ -279,36 +282,255 @@ Síla hesla závisí na délce, znakové sadě.
 
 = 11 Uveďte metody snížení rizika napadení serveru.
 
+== Honeypot
+Démoni simulující reálné služby a umožňující detekovat a analyzovat útoky.
+Často nasazovány ve formě celých sítí, které jsou routované, ale neobsahují žádné jiné služby.
+Provoz směrovaný do těchto sítí tak lze z vyšší mírou pravděpodobnosti považovat za útoky.
+
+== IDS a IPS
+Intrusion detection system jsou systémy, které slouží k detekci útoků v síti. Pokud útoky
+nejenom detekují, ale dovedou je i blokovat, mluvíme o IPS (intrusion prevention system).
+
+== SIEM
+* agregace dat
+* korelace dat
+* generování poplachů - alerting
+* shoda s požadavky (normy, zákonné požadavky) – compliance
+* retence bezpečnostně relevantních dat
+* forenzní analýza
+* konzole
+
+Sítově:
+
+:image:siems.png[Siem sit]
+
+
+Logicky:
+
+:image:sieml.png[Siem logicky]
 
 
 = 12 Uveďte metody snížení rizika napadení klienta.
+Útoky na klienty (software) jsou vedeny v převážné většině pomocí zákeřných souborů
+(dokumentů, videa, zvukových souborů, obrázků apod.). 
 
+Opatřením je aktualizace klientského:
+* software, 
+* antivir,
+* vhodná konfigurace klienta,
+* spouštění klientů v sandboxu,
+* virtuálním OS, 
+* OS spuštěného z přenosného média.
 
 
 = 13 Uveďte mechanizmy zabezpečení souborového systému.
 
-= 14 Firewall.
+TODO
+
+= 14 Firewall
+Firewall je síťové zařízení, které slouží k řízení a zabezpečování síťového provozu mezi sítěmi s různou úrovní důvěryhodnosti a zabezpečení. Zjednodušeně se dá říct, že slouží jako kontrolní bod, který definuje pravidla pro komunikaci mezi sítěmi, které od sebe odděluje. Tato pravidla historicky vždy zahrnovala identifikaci zdroje a cíle dat (zdrojovou a cílovou IP adresu) a zdrojový a cílový port, což je však pro dnešní firewally už poměrně nedostatečné – modernější firewally se opírají přinejmenším o informace o stavu spojení, znalost kontrolovaných protokolů a případně prvky IDS. Firewally se během svého vývoje řadily zhruba do následujících kategorií:
+
+* Paketové filtry
+* Aplikační brány
+* Stavové paketové filtry
+* Stavové paketové filtry s kontrolou známých protokolů a popř. kombinované s IDS
+
+Je bezpodmínečně nutné omezit přístup ze sítě pomocí správně nastaveného firewallu. Ze sítě
+povolit přístup pouze ke službám které nabízíme (je vhodné přístupy filtrovat na základě IP adresy,
+pokud má být služba dostupná jen vybraným uživatelům), a směrem do sítě povolit pouze protokoly
+klientů se kterými pracujeme.
+Příkladem implementací firewallů pod běžnými operačními systémy jsou Windows firewall
+(Windows), IPTABLES (Linux), pf (BSD UNIX).
+
 
 = 15 Auditing a logování.
 
+Logování událostí v operačním systému je základním opatřením, které slouží mimo jiné k detekci
+bezpečnostních událostí, nebo k jejich následné analýze.
+Logy by měly být shromažďovány v centralním úložišti. Zabráníme tak ztrátě informací v případě,
+kdy se za sebou útočník snaží “zamést stopy” a umožníme centrální zpracování a vyhodnocování,
+které je v případě rozsáhlejších systémů nutností (viz. SIEM).
+Z pohledu bezpečnosti je vhodné logovat alespoň následující udáosti:
+
+* Přihlášení k účtu (Úspešné/Neúspěšné)
+* Změny v účtech. resp. management uživatelů (Úspešné/Neúspěšné)
+* Přístupy k oběktům (Úspešné)
+* Změny politik (Úspešné/Neúspěšné)
+* Použití privilegií (Úspešné/Neúspěšné)
+* Systémové události (Úspešné/Neúspěšné)
+
+
 = 16 Problematika šifrování dat.
+
+Pro zajištění integrity a důvěrnosti je vhodné data šifrovat na úrovni jednotlivý souborů, nebo
+celých souborových systémů.
+Integritu souborů je také možné zajistit pomocí software, který pravidelně vytváří a aktualizuje
+databázi hashí souborů v systému a následně na základě těchto hashí reportuje při kontrole změny v
+souborech. 
 
 = 17 Bezpečnost WEB prohlížeče.
 
+TODO
+
 = 18 Bezpečnost komunikace.
+
+TODO
 
 = 19 Lokální ověření zabezpečení.
 
+Je nutné si uvědomit, že pokud útočník získá fyzický přístup k technologiím, může instalovat
+hardwarové backdoory, krást aktiva, získat přístupové tokeny, nebo zcela ovládnout operační
+systém počítače (v případě že systémové disky nejsou šofrované). Je tedy nutné aktiva adekvátně
+zabezpečit na fyzické úrovni:
+
+* přístupové systémy (vrátnice a turnikety)
+* zabezpečení budovy
+* kamerové systémy
+* detektory pohybu
+
+Jednou z možností je ověřit zabezpečení “zevnitř” (někdy označováno jako “whitebox”), kdy je
+prověřováno nastavení resp. konfigurační soubory jednotlivých zařízení podle metodiky. Příkladem
+metodik mohou být CIS benchmarky
+
+Další možností tzv. sken zranitelností (vulnerability scan) kdy jsou jednotlivá zařízení, nebo celé
+sítě skenována automatizovaným skenerem, který v první fázi detekuje jednotlivé síťové služby
+(porty) a pak se snaží pomocí specifických testů detekovat zranitelnosti na těchto službách.
+Příkladem takového skeneru může být OpenVAS
+
 = 20 Rozeberte problematiku monitorování a detekce útoků.
 
+TODO
+
 = 21 IDS/IPS
+
+
 
 = 22 Audit/Penetrační test
 
 = 23 Reakce na incidenty.
 
+CÍLE
+
+* Potvrdit, nebo vyvrátit zda k incidentu skutečně došlo
+* Shromáždit přesné a objektivní informace
+* Nastavit mechanizmy získávání a zpracování důkazů
+* Zachovat privátnost informací garantovanou zákonem
+* Minimalizovat dopady incidentu na normální fungování organizace
+* Umožnit stíhání útočníků
+* Vytvořit podrobné protokoly a doporučení
+
+
+
 = 24 Metodologie reakce na incidenty.
+
+METODOLOGIE
+
+* PŘÍPRAVA
+** Dostatečně se připravit ještě před tím, než k incidentu dojde
+* DETEKCE INCIDENTŮ 
+** Odhadnout, zda se jedná o incident.
+* POČÁTEČNÍ REAKCE 
+** Provést prvotní analýzu, zajistit informace, které nejsou trvalého charakteru (včetně svědectví zúčastněných) a potvrdit zda skutečně došlo k incidentu
+* FORMULACE STRATEGIE
+** Na základě všech známých faktů určit nejlepší reakci.
+* DUPLIKACE KRITICKÝCH DAT
+** Rozhodnout, zda je nutné kvůli pozdějšímu zkoumání vytvořit fyzickou kopii dat, nebo získat
+důkazy online.
+* PÁTRÁNÍ 
+** Provést analýzu dat za účelem odhalení toho, co se vlastně stalo, kdo je za incident odpovědný a jak je mu možné do budoucna zabránit
+* IMPLEMENTACE BEZPEČNOSTNÍCH OPATŘENÍ
+** Aktivně izolovat útočníkovi systémy a zabránit tak rozšíření incidentu
+* MONITOROVÁNÍ SÍTĚ 
+** Monitorovat síťové aktivity za účelem průzkumu a neutralizace incidentu.
+* OBNOVA
+** Vrátit napadený systém do původního funkčního stavu a jeho zabezpečení.
+* PROTOKOLOVÁNÍ 
+** Pečlivě zdokumentovat všechny kroky pátrání a přijatých bezpečnostních opatření
+* POUČENÍ 
+** Analyzovat celý proces případu, poučit se z chyb a napravit všechny bezpečnostní nedostatky systému
 
 = 25 Metodologie duplikace dat v rámci reakce na incidenty.
 
+Rozhodnout, zda je nutné kvůli pozdějšímu zkoumání vytvořit fyzickou kopii dat, nebo získat
+důkazy online.
+
+Analýza „živých“ dat versus analýza duplikátu systému
+
+Ještě před tím, než bude provedena duplikace systému, je třeba získat živá data z běžícího systému:
+
+* Obsahy registrů a vyrovnávacích pamětí
+* Obsah operační paměti
+* Informace o síťových spojeních
+* Informace o běžících procesech
+* Obsah disků
+* Obsah výměnných a zálohovacích médií
+
+Duplikování systému
+
+V neobsazeném prostotu disku se mohou nacházet informace, které mohou mít na výsledek
+pátrání poměrně značný vliv.
+
+Tři různé způsoby:
+
+* Vyjmeme odpovídající médium z napadeného systému a zduplikujeme ho v počítači používaném k vyšetřování.
+* Duplikát provedeme na napadeném systému, poté co do něho připojíme náš pevný disk.
+* Zduplikujeme relevantní médium pomocí uzavřeného síťového spojení na počítač používaný k vyšetřování.
+
+Nástroje používané k duplikování důkazů musí splňovat následující požadavky:
+
+* Aplikace musí umožňovat duplikovat každý bit originálního média. Obraz musí obsahovat všechna
+data obsažená na disku. Od počátku disku až po služební stopu.
+* Aplikace se musí spolehlivě vyrovnat s chybami čtení. Jestliže se ani po několika pokusech
+nepodaří poškozený sektor přečíst, musí být vynechán, identifikován a místo něho musí být do
+výstupních dat umístěn sektor přesně stejné délky obsahující „výplň“.
+* Aplikace nesmí žádným způsobem modifikovat data na originálním médiu.
+* Aplikace musí být schopna prodělat testování a analýzu na vědecké úrovni. Výsledky musí být
+opakovatelné a musí být možnost je potvrdit třetí stranou (pokud je to nutné).
+* Vytvořený obraz (kopie) musí být ochráněn kontrolním součtem, nebo signaturou. Kontrolní součet
+(signatura) může být vytvářena během kopírování dat (Safeback), nebo až po skončení celého
+procesu (dd a md5sum).
+
 = 26 ISMS a normativní základna
+
+== Information security management system
+
+Politiky, procedury, postupy, odpovídající zdroje a aktivity, mající za cíl chránit aktiva společnosti.
+
+Kroky nutné k implementaci, monitorování, udržování a zdokonalování ISMS:
+
+* identifikace informačních aktiv a jim odpovídajících bezpečnostních požadavků
+* analýza bezpečnostních rizik a jejich ošetření
+* výběr a implementace opatření (controls) k ošetření neakceptovatelných rizik
+* monitorování, udržování a zlepšování afektivnosti opatření určených k ochraně aktiv
+
+Bezpečnostní požadavky mohou být identifikovány na základě:
+
+* identifikovaných informačních aktiv a jejich hodnoty
+* požadavků organizace na zpracování informací, jejich ukládání a přenášení (komunikace)
+* právních, regulačních a smluvních požadavků
+
+Každé identifikované riziko musí být ošetřeno. Např.:
+
+* aplikováním odpovídajících opatření snižujících riziko
+* akceptováním rizika v souladu s kritérii organizece pro akceptování rizik
+* vyhnutí se riziku, eliminací (zákazem) akcí, které mohou riziko vyvolat
+* sdílením rizika s dalšími stranami (pojišťovny, dodavatelé)
+
+Faktory úspěšné implementace ISMS:
+
+* politika informační bezpečnosti, cíle a aktivity nutné k dosažení cílů
+* postup a framework návrhu, implementace, monitorování, udržování a zlepšování informační bezpečnosti v souladu s firemní kulturou
+* viditelná podpora všech úrovní řízení, obzvláště vrcholového managementu
+* porozumění požadavkům na ochranu informačních aktiv, dosažené aplikací řízení 
+bezpečnostních rizik
+* povědomí o informační bezpečnosti napříč společností, program vzdělávání, informování všech
+zaměstnanců o jejich relevantních povinostech ve vztahu k bezpečnosti (na základě politik a
+standardů) a jejich motivace
+* efektivní proces řízení incidentů
+* efektivní proces business continuity
+* systém metrik umožňující měřit výkonnost a efektivnost systému řízení bezpečnosti a
+poskytující informace využitelné ke zlepšení
+
+== Normativní základna
+
+TODO
