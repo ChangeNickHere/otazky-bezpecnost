@@ -81,32 +81,38 @@ Zákon o kybernetické bezpečnosti (NBÚ)
 
 GDPR
 
+Úřad pro ochranu osobních údajů nemusí dodržovat GDPR 
+
 = 3 Základní hrozby a obrana proti nim.
 
-*	 sociální inženýrství
+* sociální inženýrství
 ** obezřetnost
-*	 botnet
-*	 malware
-*	 ransomware
-*	 spam/scam 
-*	 podvodné nabídky
-*	 phishing, pharming, spear phishing, vishing, smishing
-*	 hacking
-*	 sniffing
-*	 DoS, DDoS, DRDoS útoky
-*	 šíření závadového obsahu
-*	 identity theft
-*	 APT (Advanced Persistent Threat)
-*	 kyberterorismus
-*	 kybernetické výpalné či vydírání (cyber extortion)
+* botnet
+* malware
+* ransomware
+* spam/scam 
+* podvodné nabídky
+* phishing, pharming, spear phishing
+** Pharming je podvodná technika používaná na Internetu k získávání citlivých údajů od obětí útoku. Principem je napadení DNS a přepsání IP adresy, což způsobí přesměrování klienta na falešné stránky internetbankingu po napsání URL banky do prohlížeče
+* hacking
+* sniffing
+* DoS, DDoS útoky
+* šíření závadového obsahu
+* identity theft
+* APT (Advanced Persistent Threat)
+* kyberterorismus
+* kybernetické výpalné či vydírání (cyber extortion)
 
 Typy ochrany
+
 * Udržujte svůj operační systém aktuální
 * Neotvírejte soubory z neznámých nebo podezřelých zdrojů
 * Před spuštěním stažených souborů si prohlédněte všechny soubory antivirem nebo najděte různé způsoby přenosu souborů.
 * Neklikejte na podezřelé odkazy
 * Nainstalujte antivirový program
-* Záloha dat
+* Záloha dat / šifrování dat
+* šifrování komunikace
+* firewall
 
 = 4 Popište postup návrhu bezpečnostní politiky.
 Při tvorby politik bychom však měli mít stále na mysli:
@@ -146,6 +152,12 @@ Metody analýzy rizik
 * kvalitativní (rizika jsu hodnocena ve škále, nebo slovním popisem Míra je určována kvalifikovaným odhadem)
 * kvantitativní (matematický výpočet rizika z frekvence výskytu hrozby a jeho dopadu) riziko je
 nejčastěji vyjadřováno v podobě předpokládaného množství finančních ztrát za určité období
+
+Analýza legislativi
+
+* Politika musí splňovat věci dané zákonem
+
+Analýza již existujících politik interních/externích veřejných
 
 
 = 6 Co by měla obsahovat bezpečnostní politika?
@@ -253,21 +265,25 @@ Disciplinární řízení
 při jejich tvorbě se vychází z výsledků analýzy rizik. Obsahují definici požadovaných ochranných
 opatření a popis, proč jsou nezbytná
 
-
-Bezpečnostní politika sítě, notebooku, 
-
-TODO
+Bezpečnostní politika sítě, notebooku, Odezva na únik dat, uklizeného stolu, emailová, zásady přijatelného šifrování, zásady přijatelného užití, pokyny pro tvorbu hesel, přihlašování do databáze, zásady vzdáleného přístupu, zásady zabezpečení směrovače a přepínače
 
 = 8 Jaké jsou podmínky pro úspěsnou implementaci bezpečnostní politiky?
 
-TODO
+Plná podporad vedení při implementaci
+
+Podpora zaměstnanců a odborů
+
+Technický zázemí
+
+* aktualizované zařízení (síťové, atd)
+* investice do zabezpečení
 
 = 9 Uveďte příklady metod autentizace (autentizační mechanizmy).
 
 * Jméno + heslo
 * Biometrie
 * HW bezpečnostní token
-* SW token
+* SW token (OTP one time password)
 
 = 10 Rozeberte problematiku síly hesla.
 
@@ -278,7 +294,9 @@ Znaková sada 87 znaků:
 * 10 znaků číslice
 * 25 znaků speciální znaky !@#$%^&*()_+-={[]};:,.<>?
 
-Síla hesla závisí na délce, znakové sadě.
+Síla hesla závisí na délce, znakové sadě (znaková sada ^ délku).
+
+Vyhnout se bězně užívaným heslů kvůli slovníkovému útoku
 
 = 11 Uveďte metody snížení rizika napadení serveru.
 
@@ -291,7 +309,9 @@ Provoz směrovaný do těchto sítí tak lze z vyšší mírou pravděpodobnosti
 Intrusion detection system jsou systémy, které slouží k detekci útoků v síti. Pokud útoky
 nejenom detekují, ale dovedou je i blokovat, mluvíme o IPS (intrusion prevention system).
 
-== SIEM
+== Firewall 
+
+== SIEM (Security Information and Event Management)
 * agregace dat
 * korelace dat
 * generování poplachů - alerting
@@ -309,23 +329,45 @@ Logicky:
 
 :image:sieml.png[Siem logicky]
 
-
 = 12 Uveďte metody snížení rizika napadení klienta.
 Útoky na klienty (software) jsou vedeny v převážné většině pomocí zákeřných souborů
 (dokumentů, videa, zvukových souborů, obrázků apod.). 
 
 Opatřením je aktualizace klientského:
+
 * software, 
 * antivir,
 * vhodná konfigurace klienta,
-* spouštění klientů v sandboxu,
+* spouštění applikací v sandboxu,
 * virtuálním OS, 
 * OS spuštěného z přenosného média.
 
+== Klient app
+
+* Antivir
+* Firewall
+* Aktualizace
+* Šifrovaná komunikace
+
+
+== Klient user PC
+
+* Antivir
+* Firewall
+* Aktualizace
+* Šifrovaná komunikace
 
 = 13 Uveďte mechanizmy zabezpečení souborového systému.
 
-TODO
+* Šifrování souborového systému
+** BitLocker (win), LUKS (linux), VeraCrypt
+* Kontrola a monitorování přístupových práv k souborům
+** NTFS přístupy dle windows
+** Ext4 linux ACL (access control list (rwx))
+* Centralizace managementu práv (AD, FreeIPA, OpenLDAP)
+* Záloha (RAID)
+* Centralizový vs Decentralizovaný
+* Fyzická ochrana
 
 = 14 Firewall
 Firewall je síťové zařízení, které slouží k řízení a zabezpečování síťového provozu mezi sítěmi s různou úrovní důvěryhodnosti a zabezpečení. Zjednodušeně se dá říct, že slouží jako kontrolní bod, který definuje pravidla pro komunikaci mezi sítěmi, které od sebe odděluje. Tato pravidla historicky vždy zahrnovala identifikaci zdroje a cíle dat (zdrojovou a cílovou IP adresu) a zdrojový a cílový port, což je však pro dnešní firewally už poměrně nedostatečné – modernější firewally se opírají přinejmenším o informace o stavu spojení, znalost kontrolovaných protokolů a případně prvky IDS. Firewally se během svého vývoje řadily zhruba do následujících kategorií:
@@ -359,6 +401,14 @@ Z pohledu bezpečnosti je vhodné logovat alespoň následující udáosti:
 * Použití privilegií (Úspešné/Neúspěšné)
 * Systémové události (Úspešné/Neúspěšné)
 
+== SIEM (Security Information and Event Management)
+* agregace dat
+* korelace dat
+* generování poplachů - alerting
+* shoda s požadavky (normy, zákonné požadavky) – compliance
+* retence bezpečnostně relevantních dat
+* forenzní analýza
+* konzole
 
 = 16 Problematika šifrování dat.
 
@@ -368,13 +418,38 @@ Integritu souborů je také možné zajistit pomocí software, který pravideln�
 databázi hashí souborů v systému a následně na základě těchto hashí reportuje při kontrole změny v
 souborech. 
 
+* BitLocker (win)
+* LUKS (linux)
+* VeraCrypt 
+* GPG (GNU Privacy Guard implementace PGP Pretty Good Privacy) šifrování a podepisování dat (maily)
+
+== Šifry
+=== Symetrický
+* AES
+* TDES/3DES
+
+=== Asymetrický
+* RSA
+
 = 17 Bezpečnost WEB prohlížeče.
 
-TODO
+* Aktualizace 
+* Blokování
+** JS
+** Tracking
+** Reklamy
+** Popup
+* Vynucené používání HTTPS
+** Vynucení použití TLS 1.2 a 1.3
+** Neakceptovat self sign certifikáty
+* Auditing root certifikátů v prohlížeči
+* Spouštění prohlížeče v sandboxu
 
 = 18 Bezpečnost komunikace.
 
-TODO
+Veškerá komunikace musí být šifrovaná. Používání TLS 1.2 a 1.3 vynucení bezpečné šifry v TLS. Nepřipojování se do neznámých sítí. Používání VPN. U emailu zajistit šifrování server server pokud nelze pak šifrovat na klient klient např PGP.
+
+TODO protokoly v mailu
 
 = 19 Lokální ověření zabezpečení.
 
@@ -399,13 +474,96 @@ Příkladem takového skeneru může být OpenVAS
 
 = 20 Rozeberte problematiku monitorování a detekce útoků.
 
-TODO
+* Logování
+** Serverové
+** Systémové
+** Přihlášení
+** Přístupy
+** Eskalace privilegii (admin/Root)
+** Komunikace
+*** Připojení (IP)
+*** Do určité míry celou komunikaci
+* IDS
+** správa dat
+** generování výstrahy
+** korelace událostí
+** monitorování ostatních komponent
+** řídící konzole
+* SIEM 
+** agregace dat
+** korelace dat
+** generování poplachů - alerting
+** shoda s požadavky (normy, zákonné požadavky) – compliance
+** retence bezpečnostně relevantních dat
+** forenzní analýza
+** konzole
+
+:image:sieml.png[Siem logicky]
 
 = 21 IDS/IPS
 
+IDS (Intrusion detection system) jsou systémy, které slouží k detekci útoků v síti. Pokud útoky
+nejenom detekují, ale dovedou je i blokovat, mluvíme o IPS (intrusion prevention system).
+== Klasifikace IDS
+*Podle chráněné vrstvy*
 
+* síťové (protokoly až do transportní vrstvy)
+* aplikační (WEB, Databáze)
+V poslední době dochází k prolínání a snaze analyzovat všechno, nebo nabídnout modulární řešení
+(F5).
+Existují i specializovaná řešení (ARBOR obrana proti DoS útokům).
+Podle metod detekce
+* IDS založené na pravidlech (signaturách)
+* IDS založená na profilu (detekce anomálií)
+
+*Architektura*
+*Senzor, agent:*
+
+* sbírá a analyzuje síťovou komunikaci
+
+*řídící centrum (konzole):*
+
+* správa dat
+* generování výstrahy
+* korelace událostí
+* monitorování ostatních komponent
+* řídící konzole
+
+*Způsoby zapojení do sítě*
+
+* zrcadlení portu (mirroring, SPAN)
+* větvení sítě (network TAP)
+
+*Způsoby tvorby pravidel*
+
+* negative security model (blacklist)
+* positive security model (whitelist)
+
+*Positive security model zpravidla méně zatěžuje sondu a lépe chrání před dosud neznámými útoky.*
+
+*Problémy*
+
+* falešné detekce
+* vysokorychlostní prostředí
+* potíže s detekcí neznámých hrozeb
 
 = 22 Audit/Penetrační test
+
+Z pohledu útočníka je možné provést ověření zabezpečení pomocí tzv. penetračního testu, kdy
+tester postupuje podobně jako útočník a snaží se všemi možnými resp. v zadání testu definovanými
+metodamy proniknout do aktiv testované infrastruktury.
+
+Výsledkem penetračního testu by měl být nejenom popis nalezených nedostatků, ale i podrobný
+popis všech provedených testů a jejich výsledků.
+Základním souhrnem metod používaných v penetračních testech je kurz Kybernalita.
+
+Zde jsou uvedeny některé další konkrétní výhody provádění bezpečnostních auditů.
+
+* Ověření, zda je vaše současná bezpečnostní strategie dostatečná, nebo ne.
+* Ověřit, zda se vaše úsilí v oblasti bezpečnostního školení posouvá od jednoho auditu k druhému.
+* Snížíte náklady tím, že vypnete nebo znovu použijete cizí hardware a software, který jste během auditu odhalili.
+* Bezpečnostní audity odhalí zranitelnosti, které do vaší organizace vnesla nová technologie nebo procesy.
+* Prokázat, že organizace splňuje předpisy - HIPAA, SHIELD, CCPA, GDPR atd.
 
 = 23 Reakce na incidenty.
 
@@ -533,4 +691,9 @@ poskytující informace využitelné ke zlepšení
 
 == Normativní základna
 
-TODO
+27000 Celkový přehled a definice termínů
+27001 Požadavky na ISMS
+27002 Implementace opatření
+27003 Návod k implementaci ISMS
+27004 Metriky ISMS
+27005 Řízení rizik
